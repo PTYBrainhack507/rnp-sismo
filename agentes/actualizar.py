@@ -64,6 +64,7 @@ def main():
     log(f"{est['generado_local']} | {m['now_h']} h | réplicas {m['n_aftershocks']} | M≥5 {m['n_ge5']}/{m['exp_ge5']} ({m['ratio_ge5']}×) | "
         f"semáforo {est['semaforo']['estado']} | carrera {est['carrera']['superadas']}/{est['carrera']['total']} | cambio={cambio_datos}")
     if publicar and publicar_ahora:
+        git("pull", "-q", "--rebase", "--autostash", check=False)  # por si el motor cambió desde la Mac
         git("add", "datos/estado.json", "datos/historial")
         r = git("commit", "-q", "-m", f"estado {sello} · {m['n_aftershocks']} réplicas · {est['semaforo']['estado']}", check=False)
         if r.returncode == 0:

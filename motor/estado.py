@@ -199,7 +199,7 @@ def boletin(m, comp, carr, pron, sem, generado_ms, ultimas):
         (f"La réplica mayor sigue siendo la de magnitud {num(L['mag'])} ({fecha_local(MAINSHOCK['time_ms'] + int(L['h'] * 3.6e6))}, {lugar_es(L['place'])}). "
          f"Después de ella la mayor ha sido de {num(m['max_after_largest'])}. "
          f"Han pasado {horas_texto(m['hours_since_last_ge5'])} desde la última réplica de magnitud 5 o más.") if L else "",
-        f"Comparación con los nueve casos históricos en que el primer sismo fue seguido por uno mayor: Panamá ya pasó {carr['superadas']} de {carr['total']} ventanas"
+        f"Comparación con los once casos históricos en que el primer sismo fue seguido por uno mayor: Panamá ya pasó {carr['superadas']} de {carr['total']} ventanas"
         + (f"; la próxima es la de {carr['proxima']['nombre']} ({horas_texto(carr['proxima']['horas'])}), que se cierra en {horas_texto(carr['proxima']['faltan_h'])}."
            if carr["proxima"] else ". Todas las ventanas de los casos históricos quedaron atrás."),
         f"Señales: {', '.join(s['pregunta'].rstrip('?').lstrip('¿') + ': ' + s['respuesta'].lower() for s in sem['senales'])}. Estado general: {sem['titulo'].lower()}.",
